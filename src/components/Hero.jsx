@@ -1,5 +1,6 @@
 import Markdown from 'markdown-to-jsx';
 import { Button } from './Button.jsx';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const themeClassMap = {
   imgLeft: 'md:flex-row-reverse',
@@ -19,12 +20,20 @@ export const Hero = (props) => {
             {props.heading}
           </h1>
           {props.body && (
-            <Markdown options={{ forceBlock: true }} className="mb-6 text-lg text-gray-950" data-sb-field-path="body">
-              {props.body}
-            </Markdown>
+            <div className="mb-6 text-lg text-gray-950" data-sb-field-path="body">
+                {props.body}
+                {props.inlineActionUrl && props.inlineCallToAction && (
+                  <span className="font-bold inline-flex items-center ml-4">
+                    <a href={props.inlineActionUrl} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      {props.inlineCallToAction}
+                      <FaExternalLinkAlt className="ml-2" />
+                    </a>
+                  </span>
+                )}
+            </div>
           )}
           <div className="flex justify-center space-x-4">
-            {props.button && <Button {...props.button} />}
+            {props.buttonLeft && <Button {...props.buttonLeft} />}
             {props.buttonRight && <Button {...props.buttonRight} />}
           </div>
         </div>
