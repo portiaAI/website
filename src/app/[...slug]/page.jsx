@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getPageFromSlug } from '../../utils/content.js';
 import { getComponentForSection } from '../../components/index.jsx';
 
+
 export default async function ComposablePage({ params }) {
   const { slug } = params;
 
